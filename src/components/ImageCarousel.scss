@@ -1,10 +1,13 @@
 .image-carousel {
+  flex: 1;
+  position: relative;
   padding-right: 60px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   &__timer {
-    padding-left: 146px;
+    // padding-left: 146px;
   }
 
   &__timer-list {
@@ -28,5 +31,20 @@
 
   &__pause {
     margin-top: 33px;
+  }
+
+  &__images {
+    .inactive {
+      opacity: 0.3;
+    }
+
+    .active {
+      transform: translate(0, -50%);
+    }
+
+    img {
+      position: absolute;
+      width: 30%;
+    }
   }
 }

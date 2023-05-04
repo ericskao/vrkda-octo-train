@@ -1,9 +1,15 @@
 import classnames from 'classnames';
 import { useEffect, useState } from 'react';
 
+// assets
+import imageOne from '../assets/1.png';
+import imageTwo from '../assets/2.png';
+import imageThree from '../assets/3.png';
+
+// styles
 import './ImageCarousel.scss';
 
-const images = [{}, {}, {}];
+const images = [imageOne, imageTwo, imageThree];
 
 const ImageCarousel = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -28,7 +34,24 @@ const ImageCarousel = () => {
 
   return (
     <div className="image-carousel">
-      <div>3 pics here</div>
+      <div className="image-carousel__images">
+        {images.map((image, index) => {
+          const isActive = index === activeIndex;
+          return (
+            <img
+              style={{ zIndex: isActive ? 10 : images.length - index, left: index * 100 }}
+              className={classnames({
+                active: index === activeIndex,
+                inactive: index !== activeIndex,
+              })}
+              key={index}
+              src={image}
+              alt={image}
+            />
+          );
+        })}
+        {/* images goes here */}
+      </div>
       <div className="image-carousel__timer">
         <ul className="image-carousel__timer-list">
           {images.map((image, index) => (

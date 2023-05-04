@@ -22,7 +22,9 @@
   3. Allow percentage-based heights in the application
 */
 html,
-body {
+body,
+#root,
+.app {
   height: 100%;
 }
 
@@ -77,4 +79,3 @@ h6 {
 #root {
   isolation: isolate;
 }
-
