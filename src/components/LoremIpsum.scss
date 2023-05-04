@@ -1,0 +1,50 @@
+.lorem-ipsum {
+  width: 416px;
+  box-sizing: content-box;
+  padding-left: 240px;
+  font-family: 'TTNormsPro';
+
+  &__subheader {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #929a9f;
+  }
+
+  &__header {
+    font-weight: 700;
+    line-height: 42px;
+    font-size: 32px;
+    margin: 15px 0;
+  }
+
+  &__content {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    color: #929a9f;
+  }
+
+  &__learn-more {
+    margin-top: 34px;
+
+    .arrow {
+      display: none;
+      background-color: #de8500;
+    }
+    svg {
+      display: block;
+    }
+
+    &:hover {
+      .arrow {
+        display: block;
+      }
+
+      svg {
+        display: none;
+      }
+    }
+  }
+}

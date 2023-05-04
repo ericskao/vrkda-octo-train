@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'TTNormsPro';
+  src: local('DMSans'), url('./static/fonts/TTNormsProRegular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'TTNormsPro';
+  src: local('DMSans'), url('./static/fonts/TTNormsProMedium.otf') format('opentype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'TTNormsPro';
+  src: local('DMSans'), url('./static/fonts/TTNormsProBold.otf') format('opentype');
+  font-weight: 700;
+}
+
 /*
   1. Use a more-intuitive box-sizing model.
 */
