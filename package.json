@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate",
+  "name": "verkada-carousel-kao",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -46,5 +46,9 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.3.1"
-  }
+  },
+  "description": "Boilerplate kit with Create React App, Typescript, TailwindCSS, Axios, and Node",
+  "main": ".prettierrc.js",
+  "author": "",
+  "license": "ISC"
 }

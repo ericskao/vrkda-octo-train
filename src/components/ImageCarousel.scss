@@ -1,0 +1,32 @@
+.image-carousel {
+  padding-right: 60px;
+  display: flex;
+  align-items: center;
+
+  &__timer {
+    padding-left: 146px;
+  }
+
+  &__timer-list {
+    li:not(:last-child) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__timer-item {
+    display: flex;
+    gap: 14px;
+
+    &--active {
+      background-color: pink;
+    }
+
+    &--pending {
+      background-color: gray;
+    }
+  }
+
+  &__pause {
+    margin-top: 33px;
+  }
+}
