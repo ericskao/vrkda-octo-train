@@ -8,6 +8,7 @@ import imageThree from '../assets/3.png';
 
 // styles
 import './ImageCarousel.scss';
+import Timer from './Timer';
 
 const images = [imageOne, imageTwo, imageThree];
 
@@ -57,26 +58,13 @@ const ImageCarousel = () => {
           );
         })}
       </div>
-      <div className="image-carousel__timer">
-        <ul className="image-carousel__timer-list">
-          {images.map((image, index) => (
-            <li
-              className={classnames('image-carousel__timer-item', {
-                'image-carousel__timer-item--active': index === activeIndex,
-                'image-carousel__timer-item--pending': index !== activeIndex,
-              })}
-              key={index}
-            >
-              <div>0{index + 1}</div>
-              <div>bar</div>
-            </li>
-          ))}
-        </ul>
-
-        <button className="image-carousel__pause" onClick={() => setPaused(!paused)}>
-          {paused ? 'unpause' : 'pause'}
-        </button>
-      </div>
+      <Timer
+        setActiveIndex={setActiveIndex}
+        setPaused={setPaused}
+        images={images}
+        paused={paused}
+        activeIndex={activeIndex}
+      />
     </div>
   );
 };

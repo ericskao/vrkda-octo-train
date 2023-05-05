@@ -1,0 +1,33 @@
+.timer {
+  font-family: 'TTNormsPro';
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+
+  &__timer-list {
+    li:not(:last-child) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__timer-item {
+    display: flex;
+    gap: 14px;
+
+    &--active {
+      color: #263640;
+    }
+
+    &--pending {
+      color: #c4c4c4;
+    }
+  }
+
+  &__toggle {
+    margin-top: 33px;
+  }
+
+  &__play:hover {
+    opacity: 0.7;
+  }
+}

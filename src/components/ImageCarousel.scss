@@ -1,37 +1,10 @@
 .image-carousel {
-  flex: 1;
   position: relative;
+  flex: 1;
   padding-right: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  &__timer {
-    // padding-left: 146px;
-  }
-
-  &__timer-list {
-    li:not(:last-child) {
-      margin-bottom: 40px;
-    }
-  }
-
-  &__timer-item {
-    display: flex;
-    gap: 14px;
-
-    &--active {
-      background-color: pink;
-    }
-
-    &--pending {
-      background-color: gray;
-    }
-  }
-
-  &__pause {
-    margin-top: 33px;
-  }
 
   &__image {
     position: absolute;
@@ -46,12 +19,12 @@
 
     &--next {
       opacity: 0.3;
-      transform: translate(83%, 14%);
+      transform: translate(85%, 35%);
     }
 
     &--third {
       opacity: 0.3;
-      transform: translate(78%, -99%);
+      transform: translate(80%, -100%);
     }
   }
 }
