@@ -1,5 +1,7 @@
 import classnames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import TimerClass from '../utils/timer';
+import Timer from './Timer';
 
 // assets
 import imageOne from '../assets/1.png';
@@ -8,7 +10,6 @@ import imageThree from '../assets/3.png';
 
 // styles
 import './ImageCarousel.scss';
-import Timer from './Timer';
 
 const images = [imageOne, imageTwo, imageThree];
 
@@ -16,22 +17,32 @@ const ImageCarousel = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [paused, setPaused] = useState<boolean>(false);
 
+  const timerRef: any = useRef(null);
+
   useEffect(() => {
-    let id: ReturnType<typeof setTimeout> | null = null;
-    if (paused) {
-      return;
-    } else {
-      const next = (activeIndex + 1) % images.length;
-      id = setTimeout(() => setActiveIndex(next), 4000);
-    }
-    // clean up effect
+    const ref = timerRef;
+    // clear timeout on unmount
     return () => {
-      if (id) {
-        clearTimeout(id);
-        id = null;
+      if (ref?.current) {
+        ref.current.clear();
       }
     };
-  }, [activeIndex, paused]);
+  }, []);
+
+  useEffect(() => {
+    const next = (activeIndex + 1) % images.length;
+    timerRef.current = new TimerClass(() => {
+      setActiveIndex(next);
+    }, 4000);
+  }, [activeIndex]);
+
+  useEffect(() => {
+    if (paused) {
+      timerRef.current.pause();
+    } else {
+      timerRef.current.resume();
+    }
+  }, [paused]);
 
   return (
     <div className="image-carousel">
@@ -64,6 +75,7 @@ const ImageCarousel = () => {
         images={images}
         paused={paused}
         activeIndex={activeIndex}
+        timerRef={timerRef}
       />
     </div>
   );

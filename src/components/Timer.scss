@@ -13,11 +13,11 @@
   &__timer-item {
     display: flex;
     gap: 14px;
+    align-items: center;
 
     &--active {
       color: #263640;
     }
-
     &--pending {
       color: #c4c4c4;
     }

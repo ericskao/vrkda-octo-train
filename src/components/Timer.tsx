@@ -1,6 +1,8 @@
 import classnames from 'classnames';
+import { useEffect } from 'react';
 import PauseIcon from '../assets/PauseIcon';
 import PlayIcon from '../assets/PlayIcon';
+import DotBar from './DotBar';
 
 import './Timer.scss';
 
@@ -10,30 +12,38 @@ const Timer = ({
   activeIndex,
   images,
   paused,
+  timerRef,
 }: {
   setActiveIndex: (num: number) => void;
   setPaused: (bool: boolean) => void;
   activeIndex: number;
   images: string[];
   paused: boolean;
+  timerRef: any;
 }) => {
+  useEffect(() => {}, [paused, timerRef]);
+
   return (
     <div className="timer">
       <ul className="timer__timer-list">
-        {images.map((image, index) => (
-          <li key={index}>
-            <button
-              onClick={() => setActiveIndex(index)}
-              className={classnames('timer__timer-item', {
-                'timer__timer-item--active': index === activeIndex,
-                'timer__timer-item--pending': index !== activeIndex,
-              })}
-            >
-              <div>0{index + 1}</div>
-              <div>bar</div>
-            </button>
-          </li>
-        ))}
+        {images.map((image, index) => {
+          const isActiveIndex = index === activeIndex;
+
+          return (
+            <li key={index}>
+              <button
+                onClick={() => setActiveIndex(index)}
+                className={classnames('timer__timer-item', {
+                  'timer__timer-item--active': isActiveIndex,
+                  'timer__timer-item--pending': !isActiveIndex,
+                })}
+              >
+                <div>0{index + 1}</div>
+                <DotBar isActiveIndex={isActiveIndex} paused={paused} timerRef={timerRef} />
+              </button>
+            </li>
+          );
+        })}
       </ul>
       <button className="timer__toggle" onClick={() => setPaused(!paused)}>
         {paused ? <PlayIcon className="timer__play" /> : <PauseIcon />}
