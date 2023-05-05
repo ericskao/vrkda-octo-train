@@ -37,12 +37,18 @@ const ImageCarousel = () => {
       <div className="image-carousel__images">
         {images.map((image, index) => {
           const isActive = index === activeIndex;
+          const isNext = activeIndex + 1 === index || (activeIndex === 2 && index === 0);
+          const isThird =
+            (index === 0 && activeIndex === 1) ||
+            (index === 2 && activeIndex === 0) ||
+            (index === 1 && activeIndex === 2);
           return (
             <img
-              style={{ zIndex: isActive ? 10 : images.length - index, left: index * 100 }}
-              className={classnames({
-                active: index === activeIndex,
-                inactive: index !== activeIndex,
+              style={{ zIndex: isActive ? 10 : images.length - index }}
+              className={classnames('image-carousel__image', {
+                'image-carousel__image--active': isActive,
+                'image-carousel__image--next': isNext,
+                'image-carousel__image--third': isThird,
               })}
               key={index}
               src={image}
@@ -50,7 +56,6 @@ const ImageCarousel = () => {
             />
           );
         })}
-        {/* images goes here */}
       </div>
       <div className="image-carousel__timer">
         <ul className="image-carousel__timer-list">
