@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import { useEffect } from 'react';
 import PauseIcon from '../assets/PauseIcon';
 import PlayIcon from '../assets/PlayIcon';
 import DotBar from './DotBar';
@@ -21,8 +20,6 @@ const Timer = ({
   paused: boolean;
   timerRef: any;
 }) => {
-  useEffect(() => {}, [paused, timerRef]);
-
   return (
     <div className="timer">
       <ul className="timer__timer-list">

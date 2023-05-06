@@ -31,10 +31,12 @@ const ImageCarousel = () => {
 
   useEffect(() => {
     const next = (activeIndex + 1) % images.length;
-    timerRef.current = new TimerClass(() => {
-      setActiveIndex(next);
-    }, 4000);
-  }, [activeIndex]);
+    if (!paused) {
+      timerRef.current = new TimerClass(() => {
+        setActiveIndex(next);
+      }, 4000);
+    }
+  }, [activeIndex, paused]);
 
   useEffect(() => {
     if (paused) {
@@ -43,6 +45,14 @@ const ImageCarousel = () => {
       timerRef.current.resume();
     }
   }, [paused]);
+
+  const changeIndex = (num: number) => {
+    // don't rerun if already running
+    if (num === activeIndex) return;
+    // when clicking on a timer item, need to clearTimeout and also set new index
+    setActiveIndex(num);
+    timerRef.current.clear();
+  };
 
   return (
     <div className="image-carousel">
@@ -70,7 +80,7 @@ const ImageCarousel = () => {
         })}
       </div>
       <Timer
-        setActiveIndex={setActiveIndex}
+        setActiveIndex={changeIndex}
         setPaused={setPaused}
         images={images}
         paused={paused}
