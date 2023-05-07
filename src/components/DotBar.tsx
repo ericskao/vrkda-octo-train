@@ -39,11 +39,12 @@ const DotBar = ({
   if (!isActiveIndex) {
     return <div className="dot" />;
   }
+  // height of bar is always at least 4 (dot) or 20 (bar)
   const height = Math.max(4, percentageFilled * 20);
   return (
     <div
       style={{
-        height: percentageFilled === 0 ? '4px' : height + 'px',
+        height: height + 'px',
         filter: `grayscale(${1 - percentageFilled})`,
       }}
       className="dot"

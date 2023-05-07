@@ -5,13 +5,46 @@ import Timer from './Timer';
 
 // assets
 import imageOne from '../assets/1.png';
+import imageOneDimmed from '../assets/1dimmed.png';
 import imageTwo from '../assets/2.png';
+import imageTwoDimmed from '../assets/2dimmed.png';
 import imageThree from '../assets/3.png';
+import imageThreeDimmed from '../assets/3dimmed.png';
 
 // styles
 import './ImageCarousel.scss';
 
-const images = [imageOne, imageTwo, imageThree];
+export interface ImageInterface {
+  imageUrl: string;
+  width: string;
+  height: string;
+  classname: string;
+  dimmedUrl: string;
+}
+
+const images: ImageInterface[] = [
+  {
+    imageUrl: imageOne,
+    width: '278px',
+    height: '380px',
+    classname: 'one',
+    dimmedUrl: imageOneDimmed,
+  },
+  {
+    imageUrl: imageTwo,
+    width: '226px',
+    height: '200px',
+    classname: 'two',
+    dimmedUrl: imageTwoDimmed,
+  },
+  {
+    imageUrl: imageThree,
+    width: '280px',
+    height: '250px',
+    classname: 'three',
+    dimmedUrl: imageThreeDimmed,
+  },
+];
 
 const ImageCarousel = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -21,7 +54,6 @@ const ImageCarousel = () => {
 
   useEffect(() => {
     const ref = timerRef;
-    // clear timeout on unmount
     return () => {
       if (ref?.current) {
         ref.current.clear();
@@ -65,17 +97,20 @@ const ImageCarousel = () => {
             (index === 2 && activeIndex === 0) ||
             (index === 1 && activeIndex === 2);
           return (
-            <img
-              style={{ zIndex: isActive ? 10 : images.length - index }}
+            <div
               className={classnames('image-carousel__image', {
-                'image-carousel__image--active': isActive,
-                'image-carousel__image--next': isNext,
-                'image-carousel__image--third': isThird,
+                [`image-carousel__image-${image.classname}--active`]: isActive,
+                [`image-carousel__image-${image.classname}--next`]: isNext,
+                [`image-carousel__image-${image.classname}--third`]: isThird,
               })}
               key={index}
-              src={image}
-              alt={image}
-            />
+            >
+              <img
+                style={{ width: image.width, height: image.height }}
+                src={isActive ? image.imageUrl : image.dimmedUrl}
+                alt={image.imageUrl}
+              />
+            </div>
           );
         })}
       </div>

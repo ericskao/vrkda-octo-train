@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import PauseIcon from '../assets/PauseIcon';
 import PlayIcon from '../assets/PlayIcon';
 import DotBar from './DotBar';
+import { ImageInterface } from './ImageCarousel';
 
 import './Timer.scss';
 
@@ -16,7 +17,7 @@ const Timer = ({
   setActiveIndex: (num: number) => void;
   setPaused: (bool: boolean) => void;
   activeIndex: number;
-  images: string[];
+  images: ImageInterface[];
   paused: boolean;
   timerRef: any;
 }) => {
