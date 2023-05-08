@@ -106,7 +106,7 @@ const ImageCarousel = () => {
               key={index}
             >
               <img
-                style={{ width: image.width, height: image.height }}
+                // style={{ width: image.width, height: image.height }}
                 src={isActive ? image.imageUrl : image.dimmedUrl}
                 alt={image.imageUrl}
               />

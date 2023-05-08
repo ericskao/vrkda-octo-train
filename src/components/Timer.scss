@@ -5,9 +5,23 @@
   line-height: 20px;
 
   &__timer-list {
+    @media (max-width: 700px) {
+      display: flex;
+      gap: 24px;
+    }
+
     li:not(:last-child) {
       margin-bottom: 40px;
     }
+    li:nth-last-child(2) {
+      margin-bottom: 30px;
+    }
+    li:last-child {
+      text-align: right;
+    }
+  }
+
+  &__toggle {
   }
 
   &__timer-item {
@@ -21,10 +35,6 @@
     &--pending {
       color: #c4c4c4;
     }
-  }
-
-  &__toggle {
-    margin-top: 33px;
   }
 
   &__play:hover {

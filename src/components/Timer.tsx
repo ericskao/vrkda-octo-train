@@ -42,10 +42,12 @@ const Timer = ({
             </li>
           );
         })}
+        <li>
+          <button className="timer__toggle" onClick={() => setPaused(!paused)}>
+            {paused ? <PlayIcon className="timer__play" /> : <PauseIcon />}
+          </button>
+        </li>
       </ul>
-      <button className="timer__toggle" onClick={() => setPaused(!paused)}>
-        {paused ? <PlayIcon className="timer__play" /> : <PauseIcon />}
-      </button>
     </div>
   );
 };

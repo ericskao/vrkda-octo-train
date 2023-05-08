@@ -3,11 +3,24 @@
   justify-content: space-between;
   align-items: center;
 
+  @media (max-width: 1300px) {
+    flex-direction: column;
+  }
+
   &__background {
-    background-color: pink;
     position: absolute;
-    top: 0;
+    top: -30px;
+    left: 180px;
     z-index: 0;
-    visibility: hidden;
+
+    .circle {
+      background: white;
+      border-radius: 50%;
+      height: 90px;
+      width: 90px;
+      position: relative;
+      box-shadow: 0 0 0 30px #ff9900;
+      opacity: 0.1;
+    }
   }
 }

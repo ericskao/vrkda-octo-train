@@ -4,6 +4,20 @@
   padding: 0 240px;
   font-family: 'TTNormsPro';
 
+  // responsive design
+  @media (max-width: 1600px) {
+    padding: 100px 10%;
+  }
+
+  @media (max-width: 1300px) {
+    width: 800px;
+    padding-bottom: 0px;
+  }
+
+  @media (max-width: 1000px) {
+    width: auto;
+  }
+
   &__subheader {
     font-weight: 600;
     font-size: 14px;
